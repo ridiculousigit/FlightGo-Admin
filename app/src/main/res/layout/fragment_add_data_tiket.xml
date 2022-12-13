@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.DetailTiketFragment">
+    tools:context=".view.addDataTiketFragment">
 
     <ImageView
         android:id="@+id/arrowBack_Detail"
@@ -14,8 +14,8 @@
         android:layout_height="50dp"/>
 
     <TextView
-        android:id="@+id/text_JD_Tiket"
-        android:text="Tambah Tiket"
+        android:id="@+id/text_JudulDetail"
+        android:text="Detail Tiket"
         android:textSize="24dp"
         android:gravity="center"
         android:textColor="@color/black"
@@ -24,18 +24,9 @@
         android:layout_width="186dp"
         android:layout_height="36dp"/>
 
-    <TextView
-        android:id="@+id/txtdeperaturtext"
-        android:text="Depature Fight"
-        android:layout_below="@+id/text_JD_Tiket"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <androidx.cardview.widget.CardView
-        android:layout_below="@+id/txtdeperaturtext"
+        android:layout_below="@+id/text_JudulDetail"
         android:layout_marginTop="20dp"
-        app:cardCornerRadius="10dp"
         android:layout_margin="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >

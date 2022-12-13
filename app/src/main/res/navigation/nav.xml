@@ -9,23 +9,35 @@
         android:id="@+id/splashScreenFragment"
         android:name="binar.academy.flightgoadmin.view.SplashScreenFragment"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
-        <action
-            android:id="@+id/action_splashScreenFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_splash_screen" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="binar.academy.flightgoadmin.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="binar.academy.flightgoadmin.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/costumerFragment"
+        android:name="binar.academy.flightgoadmin.view.CostumerFragment"
+        android:label="fragment_costumer"
+        tools:layout="@layout/fragment_costumer" />
+    <fragment
+        android:id="@+id/detailTiketFragment"
+        android:name="binar.academy.flightgoadmin.view.DetailTiketFragment"
+        android:label="fragment_detail_tiket"
+        tools:layout="@layout/fragment_detail_tiket" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="binar.academy.flightgoadmin.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/addDataTiketFragment"
+        android:name="binar.academy.flightgoadmin.view.addDataTiketFragment"
+        android:label="fragment_add_data_tiket"
+        tools:layout="@layout/fragment_add_data_tiket" />
 </navigation>

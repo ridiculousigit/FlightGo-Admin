@@ -33,32 +33,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_customer"
         android:layout_below="@+id/txtHeloAdmin"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:text="Customer"
-        android:padding="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:background="@drawable/grey_shape"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"/>
-
-    <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/right_arrow"
-        android:layout_below="@id/txtHeloAdmin"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="10dp"
-        />
+        android:gravity="left"/>
 
     <TextView
         android:id="@+id/txtlist"
         android:layout_below="@+id/btn_customer"
+        android:layout_marginTop="15dp"
         android:textColor="@color/orange"
         android:text="List Tiket"
         android:textStyle="bold"
@@ -66,38 +53,41 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_oneway"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_below="@+id/btn_customer"
         android:layout_toStartOf="@id/btn_roundtrip"
+        android:backgroundTint="@color/grey_500"
         android:text="Oneway"
-        android:padding="5dp"
-        android:background="@drawable/grey_shape"
         android:textAllCaps="false"
         android:textSize="11sp" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatButton
+        android:text="Roundtrip"
         android:id="@+id/btn_roundtrip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@id/btn_customer"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
-        android:background="@drawable/grey_shape"
-        android:padding="5dp"
-        android:text="Roundtrip"
+        android:backgroundTint="@color/grey_500"
         android:textAllCaps="false"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtlist"
-        android:layout_marginTop="0dp"
-        tools:listitem="@layout/card_tiket"/>
+        android:layout_marginTop="0dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_add_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
