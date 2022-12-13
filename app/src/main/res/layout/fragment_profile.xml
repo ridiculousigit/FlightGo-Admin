@@ -1,15 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/arrow_Profile"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24_black"
+        android:layout_margin="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/text_Judul"
+        android:text="Profile"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/arrow_Profile"
+        android:layout_margin="15dp"
+        android:layout_width="186dp"
+        android:layout_height="36dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgProfile"
+        android:src="@drawable/img"
+        android:layout_below="@+id/text_Judul"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"/>
+
+    <Button
+        android:id="@+id/btnBahasa"
+        android:text="Changge app language"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/boladunia"
+        android:layout_below="@+id/imgProfile"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnAccountname"
+        android:text="Changge account name"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/profile"
+        android:layout_below="@+id/btnBahasa"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnAccountPassword"
+        android:text="Change account Password"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/key"
+        android:layout_below="@+id/btnAccountname"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnHelp"
+        android:text="Help"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/info"
+        android:layout_below="@+id/btnAccountPassword"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:text="History"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/imghistori"
+        android:layout_below="@+id/btnHelp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/btn_Logout"
+        android:layout_width="55dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@id/btnHistory"
+        android:src="@drawable/logout" />
+
+    <TextView
+        android:text="Logout"
+        android:textColor="@color/orange"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_toRightOf="@+id/btn_Logout"
+        android:layout_below="@+id/btnHistory"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

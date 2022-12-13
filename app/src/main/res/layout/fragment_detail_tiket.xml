@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.DetailTiketFragment">
+
+    <ImageView
+        android:id="@+id/arrowBack_Detail"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24_black"
+        android:layout_margin="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/text_JD_Tiket"
+        android:text="Tambah Tiket"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/arrowBack_Detail"
+        android:layout_margin="15dp"
+        android:layout_width="186dp"
+        android:layout_height="36dp"/>
+
+    <TextView
+        android:id="@+id/txtdeperaturtext"
+        android:text="Depature Fight"
+        android:layout_below="@+id/text_JD_Tiket"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_below="@+id/txtdeperaturtext"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtJenisPenerbangan"
+                android:text="Jenis Penerbangan"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:id="@+id/Js_Penerbangan"
+                android:layout_marginLeft="150dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/domestic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Domestic"/>
+                <RadioButton
+                    android:text="International"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+
+            <TextView
+                android:text="Bentuk Penerbangan "
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/txtJenisPenerbangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:id="@+id/BentukPenerbangan"
+                android:layout_marginLeft="150dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/txtJenisPenerbangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:text="Oneway"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:text="RaoundTrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_kotaAsal"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/BentukPenerbangan"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/search_view_bg"
+                android:hint="Kota Asal"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_bandaraAsal"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/BentukPenerbangan"
+                android:layout_toRightOf="@+id/ed_kotaAsal"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/search_view_bg"
+                android:hint="Bandara Asal"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_kotatujuan"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_kotaAsal"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/search_view_bg"
+                android:hint="Kota Tujuan"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_BandaraTujuan"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_kotaAsal"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toRightOf="@id/ed_kotaAsal"
+                android:background="@drawable/search_view_bg"
+                android:hint="Kota Tujuan"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_KN_Asal"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_kotatujuan"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/search_view_bg"
+                android:hint="Kode Negara Asal"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_KN_Tujuan"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_BandaraTujuan"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@+id/ed_KN_Asal"
+                android:background="@drawable/search_view_bg"
+                android:hint="Kode Negara Tujuan"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_DeparatureDate"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_KN_Asal"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/search_view_bg"
+                android:hint="Departure Date"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_DeparatureTime"
+                android:layout_width="160dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_KN_Asal"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@+id/ed_KN_Asal"
+                android:background="@drawable/search_view_bg"
+                android:hint="Departure Time"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_Price"
+                android:layout_width="332dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_DeparatureDate"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/search_view_bg"
+                android:hint="Price"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_Image"
+                android:layout_width="332dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_Price"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/search_view_bg"
+                android:hint="Image"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_Description"
+                android:layout_width="332dp"
+                android:layout_height="38dp"
+                android:layout_below="@id/ed_Image"
+                android:layout_marginTop="1dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/search_view_bg"
+                android:hint="Descriptiom"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_save"
+            android:text="Update"
+            android:backgroundTint="@color/abuabu"
+            android:textAllCaps="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="Save"
+            android:textAllCaps="false"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

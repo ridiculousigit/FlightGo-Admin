@@ -7,16 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import binar.academy.flightgoadmin.R
 
-class HomeFragment : Fragment() {
+
+class DetailTiketFragment : Fragment() {
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_detail_tiket, container, false)
     }
-
 
 }

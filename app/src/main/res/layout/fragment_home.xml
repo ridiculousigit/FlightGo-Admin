@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeFragment">
+    tools:context=".view.HomeFragment"
+    style="@style/padding_layout">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/txtHome"
+        android:text="Home"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:id="@+id/txtHeloAdmin"
+        android:text="Hello, Admin"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/txtHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_customer"
+        android:layout_below="@+id/txtHeloAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customer"
+        android:layout_marginBottom="10dp"
+        android:gravity="left"/>
+
+    <TextView
+        android:id="@+id/txtlist"
+        android:layout_below="@+id/btn_customer"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/orange"
+        android:text="List Tiket"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_oneway"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/btn_customer"
+        android:layout_toStartOf="@id/btn_roundtrip"
+        android:backgroundTint="@color/grey_500"
+        android:text="Oneway"
+        android:textAllCaps="false"
+        android:textSize="11sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:text="Roundtrip"
+        android:id="@+id/btn_roundtrip"
+        android:layout_below="@id/btn_customer"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/grey_500"
+        android:textAllCaps="false"
+        android:textSize="11sp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtlist"
+        android:layout_marginTop="0dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_add_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
