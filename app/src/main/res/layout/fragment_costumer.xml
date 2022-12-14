@@ -38,6 +38,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Detailtiket"
         android:layout_marginTop="10dp"
+        tools:listitem="@layout/item_customer"
         android:layout_below="@+id/textlateOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

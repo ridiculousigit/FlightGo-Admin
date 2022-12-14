@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/padding_layout"
+    android:background="@color/grey_200"
     tools:context=".view.DetailTiketFragment">
 
     <ImageView
+        android:id="@+id/btn_back"
         android:src="@drawable/left_arrow"
         android:layout_marginTop="15dp"
         android:layout_width="32dp"
@@ -19,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_marginTop="15dp"
-        android:layout_toEndOf="@+id/arrowBack_Detail"
+        android:layout_toEndOf="@+id/btn_back"
         android:gravity="center_horizontal"
         android:text="Detail Ticket"
         android:textSize="24sp" />
@@ -27,6 +29,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_below="@id/text_JudulDetail"
         android:layout_marginTop="20dp"
+        android:layout_above="@id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.cardview.widget.CardView
@@ -316,32 +319,37 @@
 
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
         android:layout_alignParentBottom="true">
 
-        <RelativeLayout
+        <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:text="Update"
-                android:textSize="12sp"
-                android:backgroundTint="@color/grey_700"
-                />
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:text="Delete"
-                android:textSize="12sp"
-                android:backgroundTint="@color/orange"
-                android:layout_alignParentEnd="true"
-                />
-        </RelativeLayout>
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/grey_700"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/orange"
+                    android:layout_alignParentEnd="true"
+                    />
+            </RelativeLayout>
+        </com.google.android.material.bottomappbar.BottomAppBar>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>
