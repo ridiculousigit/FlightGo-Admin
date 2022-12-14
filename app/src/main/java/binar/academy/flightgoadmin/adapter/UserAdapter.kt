@@ -1,0 +1,23 @@
+package binar.academy.flightgoadmin.adapter
+
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import binar.academy.flightgoadmin.model.admin.Data
+
+class UserAdapter(private var listUser: List<Data>): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+    class ViewHolder(var binding: ): RecyclerView.ViewHolder(binding.root) {
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        TODO("Not yet implemented")
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getItemCount(): Int {
+        return listUser.size
+    }
+}
