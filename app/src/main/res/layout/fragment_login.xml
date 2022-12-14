@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/padding_layout"
     tools:context=".view.LoginFragment">
 
     <TextView
         android:id="@+id/textHeader"
         android:text="Sign In"
-        style="@style/headerText"
+        android:textSize="32sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="20dp"
@@ -23,13 +24,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textHeader"
         android:padding="10dp"
-        android:layout_margin="5dp"
         app:boxBackgroundColor="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="Email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -39,8 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edEmail"
         android:padding="10dp"
-        android:layout_margin="5dp"
         app:boxBackgroundColor="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -60,7 +62,7 @@
     <TextView
         android:id="@+id/ForgetPassword"
         android:text="Forgot Password ?"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
         android:layout_below="@+id/edPassword"
         android:layout_width="wrap_content"
@@ -71,10 +73,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Checkboxlogin"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
         android:background="@drawable/bg_button"
         android:text="Sing In" />
 
@@ -97,7 +95,7 @@
         <TextView
             android:text="OR"
             android:layout_marginStart="1dp"
-            android:layout_toRightOf="@+id/garis1"
+            android:layout_toEndOf="@+id/garis1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -106,7 +104,7 @@
             android:layout_width="150dp"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:background="@color/abuabu"/>
     </RelativeLayout>
 
@@ -117,30 +115,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/RLGaris"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/ic_google"
         android:text="Login with Google" />
 
     <TextView
 
-        android:text="Don't have an account ? "
-        android:layout_below="@id/btnGoogle"
-        android:layout_margin="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnGoogle"
+        style="@style/card_tv"
+        android:text="Don't have an account ? " />
 
     <TextView
         android:id="@+id/tv_Regist"
-        android:text="Sign Up"
-        android:textColor="@color/orange"
-        android:layout_below="@id/btnGoogle"
-        android:layout_alignParentRight="true"
-        android:layout_margin="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnGoogle"
+        android:layout_alignParentEnd="true"
+        android:text="Sign Up"
+        android:textColor="@color/orange" />
     
 </RelativeLayout>

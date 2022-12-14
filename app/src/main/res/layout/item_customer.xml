@@ -9,6 +9,7 @@
 
     <RelativeLayout
         android:layout_margin="10dp"
+        style="@style/padding_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -17,24 +18,25 @@
             android:text="Transaction ID"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <View
             android:id="@+id/garis1"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/tv_TransactionID"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/tv_TransactionID"
             android:layout_width="50dp"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@color/abuabu"/>
 
         <TextView
             android:text="Date"
-            android:layout_toRightOf="@+id/garis1"
-            android:layout_marginLeft="10dp"
-            android:textStyle="bold"
+            android:layout_toEndOf="@+id/garis1"
+            android:layout_marginStart="10dp"
             android:textColor="@color/black"
+            style="@style/card_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         
@@ -43,6 +45,7 @@
             android:text="UserID"
             android:textColor="@color/black"
             android:textStyle="bold"
+            style="@style/card_tv"
             android:layout_below="@+id/tv_TransactionID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -50,20 +53,20 @@
         <View
             android:id="@+id/garis2"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/tv_UserId"
+            android:layout_toEndOf="@+id/tv_UserId"
             android:layout_below="@+id/tv_TransactionID"
             android:layout_width="50dp"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@color/abuabu"/>
 
         <TextView
             android:text="Name"
             android:layout_below="@+id/tv_TransactionID"
-            android:layout_toRightOf="@id/garis2"
-            android:paddingLeft="10dp"
-            android:textStyle="bold"
+            android:layout_toEndOf="@id/garis2"
+            android:paddingStart="10dp"
             android:textColor="@color/black"
+            style="@style/card_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -75,16 +78,6 @@
             android:layout_below="@+id/tv_UserId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
-        <View
-            android:id="@+id/garis3"
-            android:layout_marginLeft="25dp"
-            android:layout_toRightOf="@+id/tv_UserId"
-            android:layout_below="@+id/tv_UserId"
-            android:layout_width="50dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/abuabu"/>
 
         <Button
             android:id="@+id/BtnAccept"

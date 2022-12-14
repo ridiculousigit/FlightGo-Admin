@@ -8,20 +8,27 @@
 
     <ImageView
         android:id="@+id/arrow_Profile"
-        android:src="@drawable/ic_baseline_arrow_back_ios_new_24_black"
-        android:layout_margin="15dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24_black" />
 
     <TextView
         android:id="@+id/text_Judul"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:paddingStart="85dp"
+        android:layout_toEndOf="@+id/arrow_Profile"
         android:text="Profile"
-        android:textSize="24dp"
         android:textColor="@color/black"
-        android:layout_toRightOf="@+id/arrow_Profile"
-        android:layout_margin="15dp"
-        android:layout_width="186dp"
-        android:layout_height="36dp"/>
+        android:textSize="24dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgProfile"
