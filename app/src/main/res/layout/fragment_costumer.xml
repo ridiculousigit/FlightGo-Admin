@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.CostumerFragment">
+
+    <ImageView
+        android:id="@+id/arrowBack_Customer"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24_black"
+        android:layout_margin="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/text_JudulCustomer"
+        android:text="Detail Tiket"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/arrowBack_Customer"
+        android:layout_margin="15dp"
+        android:layout_width="186dp"
+        android:layout_height="36dp"/>
+
+    <TextView
+        android:id="@+id/textlateOrder"
+        android:text="Lates Orders"
+        android:textColor="@color/orange"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_below="@id/text_JudulCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_Detailtiket"
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/item_customer"
+        android:layout_below="@+id/textlateOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
