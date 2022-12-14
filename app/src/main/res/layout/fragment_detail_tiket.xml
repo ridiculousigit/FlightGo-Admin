@@ -1,269 +1,347 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/padding_layout"
     tools:context=".view.DetailTiketFragment">
 
     <ImageView
-        android:id="@+id/arrowBack_Detail"
-        android:src="@drawable/ic_baseline_arrow_back_ios_new_24_black"
-        android:layout_margin="15dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        android:src="@drawable/left_arrow"
+        android:layout_marginTop="15dp"
+        android:layout_width="32dp"
+        android:layout_height="36dp"
+        android:contentDescription="back button" />
 
     <TextView
-        android:id="@+id/text_JD_Tiket"
-        android:text="Tambah Tiket"
-        android:textSize="24dp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:layout_toRightOf="@+id/arrowBack_Detail"
-        android:layout_margin="15dp"
-        android:layout_width="186dp"
-        android:layout_height="36dp"/>
-
-    <TextView
-        android:id="@+id/txtdeperaturtext"
-        android:text="Depature Fight"
-        android:layout_below="@+id/text_JD_Tiket"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <androidx.cardview.widget.CardView
-        android:layout_below="@+id/txtdeperaturtext"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="10dp"
-        android:layout_margin="15dp"
+        android:id="@+id/text_JudulDetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="36dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/arrowBack_Detail"
+        android:gravity="center_horizontal"
+        android:text="Detail Ticket"
+        android:textSize="24sp" />
 
-        <RelativeLayout
-            android:gravity="center"
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/text_JudulDetail"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_below="@+id/text_JudulDetail"
+            app:cardCornerRadius="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" >
 
-            <TextView
-                android:id="@+id/txtJenisPenerbangan"
-                android:text="Jenis Penerbangan"
-                android:textStyle="bold"
-                android:layout_marginTop="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <RadioGroup
-                android:id="@+id/Js_Penerbangan"
-                android:layout_marginLeft="150dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <RadioButton
-                    android:id="@+id/domestic"
+
+                <TextView
+                    android:id="@+id/txtJenisPenerbangan"
+                    android:text="Flight Type"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Domestic"/>
-                <RadioButton
-                    android:text="International"
+                    android:textSize="12sp"/>
+
+                <RadioGroup
+                    android:id="@+id/Js_Penerbangan"
+                    android:layout_marginStart="130dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/domestic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Domestic"
+                        android:textSize="12sp"/>
+                    <RadioButton
+                        android:text="International"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+                </RadioGroup>
+
+                <TextView
+                    android:text="Flight Form"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:textSize="12sp"
+                    android:layout_below="@+id/txtJenisPenerbangan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-            </RadioGroup>
 
-            <TextView
-                android:text="Bentuk Penerbangan "
-                android:textStyle="bold"
-                android:layout_marginTop="15dp"
-                android:layout_below="@+id/txtJenisPenerbangan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <RadioGroup
-                android:id="@+id/BentukPenerbangan"
-                android:layout_marginLeft="150dp"
-                android:orientation="horizontal"
-                android:layout_below="@+id/txtJenisPenerbangan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:text="Oneway"
+                <RadioGroup
+                    android:id="@+id/BentukPenerbangan"
+                    android:layout_marginStart="130dp"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/txtJenisPenerbangan"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <RadioButton
-                    android:text="RaoundTrip"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:text="Oneway"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+                    <RadioButton
+                        android:text="RoundTrip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_kota_asal"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/BentukPenerbangan"
+                    app:errorEnabled="true"
+                    android:hint="Departure City"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_kota_asal"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:textSize="12sp"
+                        android:inputType="text"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_kota_tujuan"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/BentukPenerbangan"
+                    app:errorEnabled="true"
+                    android:hint="Aarival City"
+                    android:layout_alignParentEnd="true"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_kota_tujuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="text"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_bandara_asal"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_kota_asal"
+                    app:errorEnabled="true"
+                    android:hint="Departure Airport"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_bandara_asal"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="text"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_bandara_tujuan"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_kota_tujuan"
+                    app:errorEnabled="true"
+                    android:hint="Arrival Airport"
+                    android:layout_alignParentEnd="true"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_bandara_tujuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="text"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_kode_asal"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_bandara_asal"
+                    app:errorEnabled="true"
+                    android:hint="Departure State Code"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_kode_asal"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="number"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_kode_tujuan"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_bandara_tujuan"
+                    app:errorEnabled="true"
+                    android:layout_alignParentEnd="true"
+                    android:hint="Arrival State Code"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_kode_tujuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="number"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_depart_date"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_kode_asal"
+                    app:errorEnabled="true"
+                    android:hint="Departure Date"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_depart_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="date"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_depart_time"
+                    android:layout_width="165dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_kode_tujuan"
+                    app:errorEnabled="true"
+                    android:hint="Departure Time"
+                    android:layout_alignParentEnd="true"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_depart_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="time"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_depart_date"
+                    app:errorEnabled="true"
+                    android:hint="Price"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="number"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_image"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </RadioGroup>
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_price"
+                    app:errorEnabled="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/btn_add_img"
+                    android:hint="Image"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_kotaAsal"
-                android:layout_width="160dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/BentukPenerbangan"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/search_view_bg"
-                android:hint="Kota Asal"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:inputType="text"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_bandaraAsal"
-                android:layout_width="160dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/BentukPenerbangan"
-                android:layout_toRightOf="@+id/ed_kotaAsal"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/search_view_bg"
-                android:hint="Bandara Asal"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
+                <ImageView
+                    android:id="@+id/btn_add_img"
+                    android:layout_below="@id/tl_price"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                    />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_kotatujuan"
-                android:layout_width="160dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_kotaAsal"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/search_view_bg"
-                android:hint="Kota Tujuan"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tl_image"
+                    app:errorEnabled="true"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_BandaraTujuan"
-                android:layout_width="160dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_kotaAsal"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_toRightOf="@id/ed_kotaAsal"
-                android:background="@drawable/search_view_bg"
-                android:hint="Kota Tujuan"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:hint="Description"
+                        android:textSize="12sp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_KN_Asal"
-                android:layout_width="160dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_kotatujuan"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/search_view_bg"
-                android:hint="Kode Negara Asal"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_KN_Tujuan"
-                android:layout_width="160dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_BandaraTujuan"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:layout_toRightOf="@+id/ed_KN_Asal"
-                android:background="@drawable/search_view_bg"
-                android:hint="Kode Negara Tujuan"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.core.widget.NestedScrollView>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_DeparatureDate"
-                android:layout_width="160dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_KN_Asal"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/search_view_bg"
-                android:hint="Departure Date"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_DeparatureTime"
-                android:layout_width="160dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_KN_Asal"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:layout_toRightOf="@+id/ed_KN_Asal"
-                android:background="@drawable/search_view_bg"
-                android:hint="Departure Time"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_Price"
-                android:layout_width="332dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_DeparatureDate"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/search_view_bg"
-                android:hint="Price"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_Image"
-                android:layout_width="332dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_Price"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/search_view_bg"
-                android:hint="Image"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/ed_Description"
-                android:layout_width="332dp"
-                android:layout_height="38dp"
-                android:layout_below="@id/ed_Image"
-                android:layout_marginTop="1dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/search_view_bg"
-                android:hint="Descriptiom"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent" />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_margin="20dp"
+        android:paddingTop="10dp"
         android:layout_alignParentBottom="true">
 
-        <Button
-            android:id="@+id/btn_save"
-            android:text="Update"
-            android:backgroundTint="@color/abuabu"
-            android:textAllCaps="false"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:textSize="12sp"
+                android:backgroundTint="@color/grey_700"
+                />
 
-        <Button
-            android:text="Save"
-            android:textAllCaps="false"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textSize="12sp"
+                android:backgroundTint="@color/orange"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>
