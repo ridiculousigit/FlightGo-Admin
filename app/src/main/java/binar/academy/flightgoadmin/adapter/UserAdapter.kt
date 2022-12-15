@@ -2,10 +2,11 @@ package binar.academy.flightgoadmin.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import binar.academy.flightgoadmin.databinding.CardUserBinding
 import binar.academy.flightgoadmin.model.admin.Data
 
 class UserAdapter(private var listUser: List<Data>): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
-    class ViewHolder(var binding: ): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(var binding: CardUserBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
 
