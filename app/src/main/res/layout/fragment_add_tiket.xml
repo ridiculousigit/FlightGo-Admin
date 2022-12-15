@@ -23,7 +23,7 @@
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/bnt_back"
         android:gravity="center_horizontal"
-        android:text="Detail Ticket"
+        android:text="Tambah Tiket"
         android:textSize="24sp" />
 
     <androidx.core.widget.NestedScrollView
@@ -342,6 +342,7 @@
                 android:id="@+id/card_return"
                 android:layout_below="@+id/label_card_return"
                 app:cardCornerRadius="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
