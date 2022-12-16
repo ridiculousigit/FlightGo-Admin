@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         //Customer
         findNavController().navigate(R.id.action_homeFragment_to_costumerFragment)
         //Tambah Tiket
-        findNavController().navigate(R.id.action_homeFragment_to_addTiketFragment)
+        //findNavController().navigate(R.id.action_homeFragment_to_addTiketFragment)
     }
 
     private fun showData() {

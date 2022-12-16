@@ -1,0 +1,67 @@
+package binar.academy.flightgoadmin.database
+
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
+class DataStoreAdmin(@ApplicationContext val context: Context) {
+    val DATA_EMAIL = stringPreferencesKey(ADMIN_EMAIL)
+    val DATA_PASSWORD = stringPreferencesKey(ADMIN_PASSWORD)
+    val DATA_ISLOGIN = booleanPreferencesKey(IS_LOGIN)
+    val getEmail: Flow<String> = context.dataStore.data.map {
+        it[DATA_EMAIL] ?: ""
+    }
+
+    val getPassword: Flow<String> = context.dataStore.data.map {
+        it[DATA_PASSWORD] ?: ""
+    }
+
+    val getIsLogin: Flow<Boolean> = context.dataStore.data.map {
+        it[DATA_ISLOGIN] ?: false
+    }
+
+    val getDataAdmin: Flow<String> = context.dataStore.data.map {
+        it[DATA_EMAIL] + "|" + it[DATA_PASSWORD]
+    }
+
+    suspend fun saveData(paramEmail: String, paramPass: String) {
+        context.dataStore.edit {
+            it[DATA_EMAIL] = paramEmail
+        }
+        context.dataStore.edit {
+            it[DATA_PASSWORD] = paramPass
+        }
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    suspend fun getDataAdmin() =
+        context.dataStore.data.map {
+            it[DATA_EMAIL] + "|" + it[DATA_PASSWORD]
+        }
+
+    suspend fun setLogin(paramIsLogin: Boolean) {
+        context.dataStore.edit {
+            it[DATA_ISLOGIN] = paramIsLogin
+        }
+    }
+
+    suspend fun removeLogin() {
+        context.dataStore.edit {
+            it.remove(DATA_ISLOGIN)
+        }
+    }
+
+    companion object {
+        const val ADMIN_EMAIL = "email"
+        const val ADMIN_PASSWORD = "password"
+        const val IS_LOGIN = "isLogin"
+        val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "dataAdmin")
+    }
+}
