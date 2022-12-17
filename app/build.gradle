@@ -1,10 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'androidx.navigation.safeargs'
-    id 'kotlin-kapt'
-    id 'kotlin-parcelize'
-    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -52,42 +48,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-
-    // Glide's Library
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-
-    // Swiper Refresh Layout's Library
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-
-    // Retrofit's Library
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
-
-    // Data Store's Library
-    implementation 'androidx.datastore:datastore-preferences:1.0.0'
-    implementation 'androidx.datastore:datastore-preferences-core:1.0.0'
-
-    // Live Data's Library
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-
-    // Work Manager's Library
-    implementation 'androidx.work:work-runtime-ktx:2.7.1'
-
-    // Coroutine's Library
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
-
-    // Room's Database Library
-    implementation "androidx.room:room-runtime:2.4.3"
-    kapt "androidx.room:room-compiler:2.4.3"
-    implementation "androidx.room:room-ktx:2.4.3"
-
-    // HILT Depedency Injection's Library
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-compiler:2.44"
-
-    // Testing's Library
-    testImplementation "io.mockk:mockk:1.13.1"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 }

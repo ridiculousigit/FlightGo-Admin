@@ -53,8 +53,7 @@ class DataStoreAdmin(@ApplicationContext val context: Context) {
 
     suspend fun removeLogin() {
         context.token.edit {
-            it.remove(DATA_ISLOGIN)
-        }
+
     }
 
     companion object {

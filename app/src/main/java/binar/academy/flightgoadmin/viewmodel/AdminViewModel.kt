@@ -48,6 +48,53 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
         }
     }
 
+    fun callDataAdmin(lifecycle: LifecycleOwner) {
+        getEmail(lifecycle)
+        getPassword(lifecycle)
+    }
+
+    fun saveData(email: String, password: String) {
+        GlobalScope.launch {
+            adminStore.saveData(email, password)
+        }
+    }
+
+    fun getEmail(lifecycle: LifecycleOwner) {
+        adminStore.getEmail.asLiveData().observe(lifecycle) {
+            livedataEmail.postValue(it)
+        }
+    }
+
+    fun getPassword(lifecycle: LifecycleOwner) {
+        adminStore.getPassword.asLiveData().observe(lifecycle) {
+            livedataPassword.postValue(it)
+        }
+    }
+
+    fun getUserData(lifecycle: LifecycleOwner) {
+        adminStore.getDataAdmin.asLiveData().observe(lifecycle) {
+            dataAdmin.postValue(it)
+        }
+    }
+
+    fun checkIsLogin(lifecycle: LifecycleOwner) {
+        adminStore.getIsLogin.asLiveData().observe(lifecycle) {
+            livedataIsLogin.postValue(it)
+        }
+    }
+
+    fun saveLoginStatus(status: Boolean) {
+        GlobalScope.launch {
+            adminStore.setLogin(status)
+        }
+    }
+
+    fun removeLoginStatus() {
+        GlobalScope.launch {
+            adminStore.removeLogin()
+        }
+    }
+
     fun getLiveAllTic() : MutableLiveData<TiketResponseItem?>{
         return getAll
     }
