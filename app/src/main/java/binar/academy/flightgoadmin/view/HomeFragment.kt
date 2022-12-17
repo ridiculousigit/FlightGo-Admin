@@ -36,6 +36,13 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Auth
+        viewModel.getRole().observe(viewLifecycleOwner){
+            if (it != null){
+                val name = "Halo, $it"
+                binding.txtHeloAdmin.text = name
+            }
+        }
 
         //Show Data
         showData()
@@ -52,15 +59,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun showData() {
-        viewModel.getApiAllTic()
-        viewModel.getLiveAllTic().observe(viewLifecycleOwner){
+        viewModel.getToken().observe(viewLifecycleOwner){
             if (it != null){
-                adapter.setData(it as ArrayList<TiketResponseItem>)
-                binding.rvHome.adapter = TiketAdapter(it)
-                adapter = TiketAdapter(it)
-                binding.rvHome.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                viewModel.getApiAllTic(it)
+                viewModel.getLiveAllTic().observe(viewLifecycleOwner){ tiket ->
+                    if (tiket != null){
+                        adapter.setData(tiket as ArrayList<TiketResponseItem>)
+                        binding.rvHome.adapter = TiketAdapter(tiket)
+                        adapter = TiketAdapter(tiket)
+                        binding.rvHome.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    }
+                }
             }
         }
+
+
     }
 
     override fun onResume() {

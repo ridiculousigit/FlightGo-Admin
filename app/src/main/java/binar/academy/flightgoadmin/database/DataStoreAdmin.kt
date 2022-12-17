@@ -7,61 +7,58 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import binar.academy.flightgoadmin.database.DataStoreAdmin.Companion.token
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+private val Context.token : DataStore<Preferences> by preferencesDataStore(name = token)
 class DataStoreAdmin(@ApplicationContext val context: Context) {
-    val DATA_EMAIL = stringPreferencesKey(ADMIN_EMAIL)
-    val DATA_PASSWORD = stringPreferencesKey(ADMIN_PASSWORD)
+    val DATA_ROLE = stringPreferencesKey(ROLE)
     val DATA_ISLOGIN = booleanPreferencesKey(IS_LOGIN)
-    val getEmail: Flow<String> = context.dataStore.data.map {
-        it[DATA_EMAIL] ?: ""
+    private val MYTOKEN = stringPreferencesKey("tokenKey")
+
+    suspend fun saveData(paramRole: String, paramToken: String) {
+        context.token.edit {
+            it[DATA_ROLE] = paramRole
+            it[MYTOKEN] = paramToken
+        }
     }
 
-    val getPassword: Flow<String> = context.dataStore.data.map {
-        it[DATA_PASSWORD] ?: ""
+    fun getRole(): Flow<String> = context.token.data.map {
+        it[DATA_ROLE] ?: ""
     }
 
-    val getIsLogin: Flow<Boolean> = context.dataStore.data.map {
+    fun getIsLogin(): Flow<Boolean> = context.token.data.map {
         it[DATA_ISLOGIN] ?: false
     }
 
-    val getDataAdmin: Flow<String> = context.dataStore.data.map {
-        it[DATA_EMAIL] + "|" + it[DATA_PASSWORD]
+    fun getToken(): Flow<String> = context.token.data.map {
+        it[MYTOKEN] ?: "Undefined Token"
     }
 
-    suspend fun saveData(paramEmail: String, paramPass: String) {
-        context.dataStore.edit {
-            it[DATA_EMAIL] = paramEmail
-        }
-        context.dataStore.edit {
-            it[DATA_PASSWORD] = paramPass
-        }
-    }
 
     @Suppress("RedundantSuspendModifier")
-    suspend fun getDataAdmin() =
-        context.dataStore.data.map {
-            it[DATA_EMAIL] + "|" + it[DATA_PASSWORD]
+
+    suspend fun deleteToken() =
+        context.token.edit {
+            it.clear()
         }
 
     suspend fun setLogin(paramIsLogin: Boolean) {
-        context.dataStore.edit {
+        context.token.edit {
             it[DATA_ISLOGIN] = paramIsLogin
         }
     }
 
     suspend fun removeLogin() {
-        context.dataStore.edit {
-            it.remove(DATA_ISLOGIN)
-        }
+        context.token.edit {
+
     }
 
     companion object {
-        const val ADMIN_EMAIL = "email"
-        const val ADMIN_PASSWORD = "password"
+        const val ROLE = "role"
         const val IS_LOGIN = "isLogin"
-        val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "dataAdmin")
+        const val token = "token"
     }
 }

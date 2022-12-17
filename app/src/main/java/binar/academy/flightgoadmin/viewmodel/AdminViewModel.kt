@@ -2,11 +2,10 @@ package binar.academy.flightgoadmin.viewmodel
 
 import android.content.Context
 import android.util.Log
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import binar.academy.flightgoadmin.database.DataStoreAdmin
+import binar.academy.flightgoadmin.model.admin.AdminDataClass
+import binar.academy.flightgoadmin.model.admin.Data
 import binar.academy.flightgoadmin.model.tiket.TiketResponseItem
 import binar.academy.flightgoadmin.network.APIService
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,12 +21,32 @@ import javax.inject.Inject
 class AdminViewModel @Inject constructor(var api : APIService, @ApplicationContext appContext: Context): ViewModel() {
 
     // LivaData
-    var livedataEmail: MutableLiveData<String> = MutableLiveData()
-    var livedataPassword: MutableLiveData<String> = MutableLiveData()
+    var livedataToken: MutableLiveData<String> = MutableLiveData()
     var livedataIsLogin: MutableLiveData<Boolean> = MutableLiveData()
-    var dataAdmin: MutableLiveData<String> = MutableLiveData()
     private val adminStore: DataStoreAdmin = DataStoreAdmin(appContext)
     var getAll : MutableLiveData<TiketResponseItem?> = MutableLiveData()
+    var login : MutableLiveData<Data?> = MutableLiveData()
+
+    fun saveData(role: String, token_: String) {
+        GlobalScope.launch {
+            adminStore.saveData(role, token_)
+        }
+    }
+
+    fun getToken()= adminStore.getToken().asLiveData()
+    fun getRole()= adminStore.getRole().asLiveData()
+
+    fun saveLoginStatus(status: Boolean) {
+        GlobalScope.launch {
+            adminStore.setLogin(status)
+        }
+    }
+
+    fun removeLoginStatus() {
+        GlobalScope.launch {
+            adminStore.removeLogin()
+        }
+    }
 
     fun callDataAdmin(lifecycle: LifecycleOwner) {
         getEmail(lifecycle)
@@ -80,10 +99,40 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
         return getAll
     }
 
-    //Retrofit
+    fun LoginLive() : LiveData<Data?> {
+        return login
+    }
 
-    fun getApiAllTic(){
-        api.getAllTic()
+    //Retrofit
+    fun apiLogin(email: String, pass: String){
+        api.adminLogin(AdminDataClass(email,pass))
+            .enqueue(object : Callback<Data>{
+                override fun onResponse(call: Call<Data>, response: Response<Data>) {
+                    if (response.isSuccessful){
+                        val body = response.body()
+                        if (body!=null){
+                            login.postValue(body)
+                            Log.d("SUCCESS", "$body")
+                        }else{
+                            login.postValue(null)
+                            error("NULL" + response.message())
+                        }
+                    }else{
+                        login.postValue(null)
+                        error(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<Data>, t: Throwable) {
+                    login.postValue(null)
+                    Log.e("FAILED", "SOMETHING WRONG", t )
+                }
+
+            })
+    }
+
+    fun getApiAllTic(token_: String){
+        api.getAllTic(token_)
             .enqueue(object : Callback<TiketResponseItem>{
                 override fun onResponse(
                     call: Call<TiketResponseItem>,

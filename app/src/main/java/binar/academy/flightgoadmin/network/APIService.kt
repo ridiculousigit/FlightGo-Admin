@@ -14,7 +14,9 @@ import retrofit2.http.POST
 interface APIService {
     //get all tiket
     @GET("ticket")
-    fun getAllTic() : Call<TiketResponseItem>
+    fun getAllTic(
+        @Header("")token: String
+    ) : Call<TiketResponseItem>
 
     @POST("login")
     fun adminLogin(@Body login:AdminDataClass): Call<Data>

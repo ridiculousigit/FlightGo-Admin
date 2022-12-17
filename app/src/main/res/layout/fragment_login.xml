@@ -75,8 +75,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Checkboxlogin"
-        android:background="@drawable/bg_button"
-        android:text="Sing In" />
+        android:backgroundTint="@color/orange"
+        android:text="Sign In" />
 
     <RelativeLayout
         android:id="@+id/RLGaris"

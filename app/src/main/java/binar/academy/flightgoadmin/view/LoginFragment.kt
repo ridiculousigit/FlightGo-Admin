@@ -3,77 +3,61 @@ package binar.academy.flightgoadmin.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import binar.academy.flightgoadmin.MainActivity
+import androidx.navigation.fragment.findNavController
+import binar.academy.flightgoadmin.R
 import binar.academy.flightgoadmin.databinding.FragmentLoginBinding
 import binar.academy.flightgoadmin.viewmodel.AdminViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private lateinit var mContext: Context
-    private var savedEmail: String = ""
-    private var savedPassword: String = ""
-    lateinit var viewModel: AdminViewModel
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mContext = context
-    }
+    private lateinit var viewModel: AdminViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[AdminViewModel::class.java]
         return binding.root
     }
 
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(requireActivity())[AdminViewModel::class.java]
-    }
-
-    private fun setupView() {
-        viewModel.callDataAdmin(viewLifecycleOwner)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.btnSignIn.setOnClickListener {
             loginAction()
         }
-
-        viewModel.livedataEmail.observe(viewLifecycleOwner, ({
-            savedEmail = "admin@gmail.com"
-        }))
-
-        viewModel.livedataPassword.observe(viewLifecycleOwner, ({
-            savedPassword = "123456"
-        }))
     }
 
     private fun loginAction() {
         val email = binding.adminEmail.text.toString()
         val password = binding.adminPassword.text.toString()
-        when {
-            email == "" -> {
-                binding.adminEmail.error = "Please fill out this field."
-            }
-            password == "" -> {
-                binding.adminPassword.error = "Please fill out this field."
-            }
-            email != savedEmail -> {
-                Toast.makeText(mContext, "Incorrect Username !", Toast.LENGTH_SHORT).show()
-            }
-            password != savedPassword -> {
-                Toast.makeText(mContext, "Incorrect Password", Toast.LENGTH_SHORT).show()
-            }
-            email == savedEmail && password == savedPassword -> {
-                viewModel.saveLoginStatus(true)
-                startActivity(Intent(mContext, MainActivity::class.java))
-                activity?.finish()
+        if (email == "" && password ==""){
+            binding.edEmail.error = "Please fill out this field."
+            binding.edPassword.error = "Please fill out this field."
+        }else{
+            viewModel.saveLoginStatus(true)
+            viewModel.apiLogin(email, password)
+            viewModel.LoginLive().observe(viewLifecycleOwner){
+                if (it != null){
+                    //save token to Data Store
+                    viewModel.saveData(it.role, it.accessToken)
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    Log.d("ACCESS TOKEN: ", it.accessToken)
+                    Toast.makeText(context, "Halo ${it.role}", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(context, "Failed Login", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -82,6 +66,4 @@ class LoginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }
