@@ -23,7 +23,6 @@ class TiketAdapter(private var listTiketItem: List<TiketResponseItem>) : Recycle
         holder.binding.tvKodeArrival.text = listTiketItem[position].kodeNegaraTujuan
         holder.binding.tvTimeDepart.text = listTiketItem[position].depatureTime
         //holder.binding.tvFlightNo.text = listTiketItem[position].
-        holder.binding.tvClassFlight.text = listTiketItem[position].jenisPenerbangan
         holder.binding.tvPrice.text = buildString {
             append("Rp. ")
             append(listTiketItem[position].price.toString())
