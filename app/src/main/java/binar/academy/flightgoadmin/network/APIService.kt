@@ -19,7 +19,7 @@ interface APIService {
     ) : Call<TiketResponseItem>
 
     @POST("login")
-    fun adminLogin(@Body login:AdminDataClass): Call<Data>
+    fun adminLogin(@Body login:AdminDataClass): Call<AdminResponse>
 
     @GET("logout")
     fun adminLogout(@Header("Authorization") token: String): Call<String>

@@ -51,10 +51,10 @@ class LoginFragment : Fragment() {
             viewModel.LoginLive().observe(viewLifecycleOwner){
                 if (it != null){
                     //save token to Data Store
-                    viewModel.saveData(it.role, it.accessToken)
+                    viewModel.saveData(it.data.role, it.data.accessToken)
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                    Log.d("ACCESS TOKEN: ", it.accessToken)
-                    Toast.makeText(context, "Halo ${it.role}", Toast.LENGTH_SHORT).show()
+                    Log.d("ACCESS TOKEN: ", it.data.accessToken)
+                    Toast.makeText(context, "Halo ${it.data.role}", Toast.LENGTH_SHORT).show()
                 }else{
                     Toast.makeText(context, "Failed Login", Toast.LENGTH_SHORT).show()
                 }

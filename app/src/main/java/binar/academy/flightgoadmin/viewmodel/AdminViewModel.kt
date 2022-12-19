@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import binar.academy.flightgoadmin.database.DataStoreAdmin
 import binar.academy.flightgoadmin.model.admin.AdminDataClass
+import binar.academy.flightgoadmin.model.admin.AdminResponse
 import binar.academy.flightgoadmin.model.admin.Data
 import binar.academy.flightgoadmin.model.tiket.TiketResponseItem
 import binar.academy.flightgoadmin.network.APIService
@@ -25,7 +26,7 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
     var livedataIsLogin: MutableLiveData<Boolean> = MutableLiveData()
     private val adminStore: DataStoreAdmin = DataStoreAdmin(appContext)
     var getAll : MutableLiveData<TiketResponseItem?> = MutableLiveData()
-    var login : MutableLiveData<Data?> = MutableLiveData()
+    var login : MutableLiveData<AdminResponse?> = MutableLiveData()
 
     fun saveData(role: String, token_: String) {
         GlobalScope.launch {
@@ -48,66 +49,19 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
         }
     }
 
-    fun callDataAdmin(lifecycle: LifecycleOwner) {
-        getEmail(lifecycle)
-        getPassword(lifecycle)
-    }
-
-    fun saveData(email: String, password: String) {
-        GlobalScope.launch {
-            adminStore.saveData(email, password)
-        }
-    }
-
-    fun getEmail(lifecycle: LifecycleOwner) {
-        adminStore.getEmail.asLiveData().observe(lifecycle) {
-            livedataEmail.postValue(it)
-        }
-    }
-
-    fun getPassword(lifecycle: LifecycleOwner) {
-        adminStore.getPassword.asLiveData().observe(lifecycle) {
-            livedataPassword.postValue(it)
-        }
-    }
-
-    fun getUserData(lifecycle: LifecycleOwner) {
-        adminStore.getDataAdmin.asLiveData().observe(lifecycle) {
-            dataAdmin.postValue(it)
-        }
-    }
-
-    fun checkIsLogin(lifecycle: LifecycleOwner) {
-        adminStore.getIsLogin.asLiveData().observe(lifecycle) {
-            livedataIsLogin.postValue(it)
-        }
-    }
-
-    fun saveLoginStatus(status: Boolean) {
-        GlobalScope.launch {
-            adminStore.setLogin(status)
-        }
-    }
-
-    fun removeLoginStatus() {
-        GlobalScope.launch {
-            adminStore.removeLogin()
-        }
-    }
-
     fun getLiveAllTic() : MutableLiveData<TiketResponseItem?>{
         return getAll
     }
 
-    fun LoginLive() : LiveData<Data?> {
+    fun LoginLive() : LiveData<AdminResponse?> {
         return login
     }
 
     //Retrofit
     fun apiLogin(email: String, pass: String){
         api.adminLogin(AdminDataClass(email,pass))
-            .enqueue(object : Callback<Data>{
-                override fun onResponse(call: Call<Data>, response: Response<Data>) {
+            .enqueue(object : Callback<AdminResponse>{
+                override fun onResponse(call: Call<AdminResponse>, response: Response<AdminResponse>) {
                     if (response.isSuccessful){
                         val body = response.body()
                         if (body!=null){
@@ -123,7 +77,7 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
                     }
                 }
 
-                override fun onFailure(call: Call<Data>, t: Throwable) {
+                override fun onFailure(call: Call<AdminResponse>, t: Throwable) {
                     login.postValue(null)
                     Log.e("FAILED", "SOMETHING WRONG", t )
                 }
