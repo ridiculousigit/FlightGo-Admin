@@ -16,7 +16,7 @@ private val Context.token : DataStore<Preferences> by preferencesDataStore(name 
 class DataStoreAdmin(@ApplicationContext val context: Context) {
     val DATA_ROLE = stringPreferencesKey(ROLE)
     val DATA_ISLOGIN = booleanPreferencesKey(IS_LOGIN)
-    private val MYTOKEN = stringPreferencesKey("tokenKey")
+    private val MYTOKEN = stringPreferencesKey(token)
 
     suspend fun saveData(paramRole: String, paramToken: String) {
         context.token.edit {
@@ -54,11 +54,12 @@ class DataStoreAdmin(@ApplicationContext val context: Context) {
     suspend fun removeLogin() {
         context.token.edit {
 
+        }
     }
 
-    companion object {
-        const val ROLE = "role"
-        const val IS_LOGIN = "isLogin"
-        const val token = "token"
-    }
+        companion object {
+            const val ROLE = "role"
+            const val IS_LOGIN = "isLogin"
+            const val token = "token"
+        }
 }

@@ -28,7 +28,7 @@ object APIClient {
             .addInterceptor(loggingInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://flightgo-be-server-production.up.railway.app/v1/api/")
+            .baseUrl("https://flightgo-be-server.up.railway.app/v1/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
