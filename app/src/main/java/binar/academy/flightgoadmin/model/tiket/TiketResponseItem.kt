@@ -58,4 +58,4 @@ data class TiketResponseItem(
     val totalPrice: Int,
     @SerializedName("updatedAt")
     val updatedAt: String
-)
+) : java.io.Serializable

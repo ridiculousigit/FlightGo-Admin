@@ -1,5 +1,6 @@
 package binar.academy.flightgoadmin.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,11 @@ import binar.academy.flightgoadmin.model.tiket.TiketResponse
 import binar.academy.flightgoadmin.model.tiket.TiketResponseItem
 import com.bumptech.glide.Glide
 
-class TiketAdapter(private var listTiketItem: List<TiketResponseItem>) : RecyclerView.Adapter<TiketAdapter.ViewHolder>(){
+class TiketAdapter(
+    private val context: Context,
+    private var listTiketItem: List<TiketResponseItem>,
+    private val onClick : onClickInterface
+    ) : RecyclerView.Adapter<TiketAdapter.ViewHolder>(){
     class ViewHolder(var binding: CardTiketBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,22 +22,29 @@ class TiketAdapter(private var listTiketItem: List<TiketResponseItem>) : Recycle
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.tvDepart.text = listTiketItem[position].bandaraAsal
-        holder.binding.tvArrival.text = listTiketItem[position].bandaraTujuan
-        holder.binding.tvKodeDepart.text = listTiketItem[position].kodeNegaraAsal
-        holder.binding.tvKodeArrival.text = listTiketItem[position].kodeNegaraTujuan
-        holder.binding.tvTimeDepart.text = listTiketItem[position].depatureTime
-        //holder.binding.tvFlightNo.text = listTiketItem[position].
-        holder.binding.tvPrice.text = buildString {
-            append("Rp. ")
-            append(listTiketItem[position].price.toString())
+        holder.binding.apply {
+            val currentList = listTiketItem[position]
+            tvDepart.text = currentList.bandaraAsal
+            tvDepart.text = currentList.bandaraAsal
+            tvArrival.text = currentList.bandaraTujuan
+            tvKodeDepart.text = currentList.kodeNegaraAsal
+            tvKodeArrival.text = currentList.kodeNegaraTujuan
+            tvTimeDepart.text = currentList.depatureTime
+            tvFlightType.text = currentList.jenisPenerbangan
+            tvPrice.text = buildString {
+                append("Rp. ")
+                append(currentList.price.toString())
+            }
         }
-        Glide.with(holder.itemView).load(listTiketItem[position].imageProduct).into(holder.binding.imgFlight)
+
+        holder.binding.root.setOnClickListener {
+            onClick.onItemClick(listTiketItem[position])
+        }
     }
 
     override fun getItemCount(): Int = listTiketItem.size
 
-    fun setData(data : ArrayList<TiketResponseItem>){
-        this.listTiketItem = data
+    interface onClickInterface{
+        fun onItemClick(list: TiketResponseItem)
     }
 }

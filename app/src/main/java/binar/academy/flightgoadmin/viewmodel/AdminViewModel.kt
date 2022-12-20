@@ -7,10 +7,12 @@ import binar.academy.flightgoadmin.database.DataStoreAdmin
 import binar.academy.flightgoadmin.model.admin.AdminDataClass
 import binar.academy.flightgoadmin.model.admin.AdminResponse
 import binar.academy.flightgoadmin.model.admin.Data
+import binar.academy.flightgoadmin.model.tiket.TiketResponse
 import binar.academy.flightgoadmin.model.tiket.TiketResponseItem
 import binar.academy.flightgoadmin.network.APIService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -25,8 +27,14 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
     var livedataToken: MutableLiveData<String> = MutableLiveData()
     var livedataIsLogin: MutableLiveData<Boolean> = MutableLiveData()
     private val adminStore: DataStoreAdmin = DataStoreAdmin(appContext)
-    var getAll : MutableLiveData<TiketResponseItem?> = MutableLiveData()
+    val getAll : MutableLiveData<TiketResponse?> = MutableLiveData()
     var login : MutableLiveData<AdminResponse?> = MutableLiveData()
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            getApiAllTic()
+        }
+    }
 
     fun saveData(role: String, token_: String) {
         GlobalScope.launch {
@@ -49,7 +57,7 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
         }
     }
 
-    fun getLiveAllTic() : MutableLiveData<TiketResponseItem?>{
+    fun getLiveAllTic() : LiveData<TiketResponse?>{
         return getAll
     }
 
@@ -85,12 +93,12 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
             })
     }
 
-    fun getApiAllTic(token_: String){
-        api.getAllTic(token_)
-            .enqueue(object : Callback<TiketResponseItem>{
+    fun getApiAllTic(){
+        api.getAllTic()
+            .enqueue(object : Callback<TiketResponse>{
                 override fun onResponse(
-                    call: Call<TiketResponseItem>,
-                    response: Response<TiketResponseItem>,
+                    call: Call<TiketResponse>,
+                    response: Response<TiketResponse>,
                 ) {
                     if (response.isSuccessful){
                         val body = response.body()
@@ -104,8 +112,8 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
                     }
                 }
 
-                override fun onFailure(call: Call<TiketResponseItem>, t: Throwable) {
-                    Log.e("FAILED GET : ", "SOMETHING WRONG ", t)
+                override fun onFailure(call: Call<TiketResponse>, t: Throwable) {
+                    Log.e("FAILED GET : ", "SOMETHING WRONG ${t.message}", t)
                 }
 
             })
