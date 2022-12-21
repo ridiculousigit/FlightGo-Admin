@@ -34,7 +34,7 @@ class DataStoreAdmin(@ApplicationContext val context: Context) {
     }
 
     fun getToken(): Flow<String> = context.token.data.map {
-        it[MYTOKEN] ?: "Undefined Token"
+        it[MYTOKEN] ?: "undefined"
     }
 
 

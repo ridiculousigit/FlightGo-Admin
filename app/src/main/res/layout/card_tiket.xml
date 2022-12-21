@@ -7,6 +7,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="28dp">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -14,6 +16,7 @@
             style="@style/padding_card">
 
             <ImageView
+                android:id="@+id/vImage"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
@@ -75,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/tv_kode_arrival"
-                android:text="Flight No."
+                android:text="Flight Type"
                 android:textSize="12sp"
                 style="@style/card_tv"
                 />
@@ -91,12 +94,12 @@
                 />
 
             <TextView
-                android:id="@+id/tv__flight_no"
+                android:id="@+id/tv_flight_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/label_flight_no"
-                android:hint="GA 123"
+                android:hint="International"
                 android:textStyle="bold"
                 />
 
@@ -117,6 +120,7 @@
                 android:textSize="18sp"
                 android:layout_below="@id/img_flight"
                 />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
