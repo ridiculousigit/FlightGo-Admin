@@ -46,13 +46,7 @@ class HomeFragment : Fragment(), TiketAdapter.onClickInterface {
         }
 
         //Show Data
-        viewModel.getApiAllTic()
-        viewModel.getLiveAllTic().observe(viewLifecycleOwner) { list ->
-            Log.d("Data Tiket: ", list.toString())
-            if (list != null) {
-                setUpRV(list)
-            }
-        }
+        showData()
 
         //Customer
         binding.btnCustomer.setOnClickListener {
@@ -86,7 +80,7 @@ class HomeFragment : Fragment(), TiketAdapter.onClickInterface {
     }
 
     override fun onItemClick(list: TiketResponseItem) {
-        Log.d("Item Clicked", "List Tiket")
+        Log.d("Item Clicked", "List Tiket : ${list.id}")
         val bundle = Bundle()
         bundle.putSerializable("dataTiket", list)
         findNavController().navigate(R.id.action_homeFragment_to_detailTiketFragment, bundle)

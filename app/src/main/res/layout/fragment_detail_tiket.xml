@@ -37,18 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/label_card_depart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Departure Flight"
-                android:gravity="center_horizontal"
-                style="@style/card_tv"
-                />
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_depart"
-                android:layout_below="@id/label_card_depart"
                 app:cardCornerRadius="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
@@ -59,38 +49,69 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/label_card_depart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Departure Flight"
+                        android:gravity="center_horizontal"
+                        style="@style/card_tv"
+                        />
+
+                    <ImageView
+                        android:id="@+id/image_prod"
+                        android:layout_below="@id/label_card_depart"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_broken_image_24"
+                        android:contentDescription="Image Product" />
+
+                    <TextView
+                        android:id="@+id/image_id"
+                        android:visibility="invisible"
+                        android:layout_below="@id/image_prod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="url image"
+                        android:textSize="10sp"
+                        />
+
+                    <TextView
                         android:id="@+id/txtJenisPenerbangan"
                         android:text="Flight Type"
                         android:textStyle="bold"
+                        android:layout_below="@id/image_id"
                         android:layout_marginTop="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"/>
+                        android:textSize="11sp"/>
 
                     <RadioGroup
                         android:id="@+id/Js_Penerbangan"
+                        android:layout_below="@id/image_id"
                         android:layout_marginStart="130dp"
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <RadioButton
-                            android:id="@+id/domestic"
+                            android:id="@+id/Domestik"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Domestic"
-                            android:textSize="12sp"/>
+                            android:textSize="11sp"/>
                         <RadioButton
+                            android:id="@+id/Internasional"
                             android:text="International"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"/>
+                            android:textSize="11sp"/>
                     </RadioGroup>
 
                     <TextView
                         android:text="Flight Form"
                         android:textStyle="bold"
                         android:layout_marginTop="15dp"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         android:layout_below="@+id/txtJenisPenerbangan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -104,15 +125,17 @@
                         android:layout_height="wrap_content">
 
                         <RadioButton
+                            android:id="@+id/Oneway"
                             android:text="Oneway"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"/>
+                            android:textSize="11sp"/>
                         <RadioButton
+                            android:id="@+id/Roundtrip"
                             android:text="RoundTrip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"/>
+                            android:textSize="11sp"/>
                     </RadioGroup>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -127,8 +150,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_kota_asal"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:textSize="12sp"
+                            android:layout_height="50dp"
+                            android:textSize="11sp"
                             android:inputType="text"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -139,16 +162,16 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/BentukPenerbangan"
                         app:errorEnabled="true"
-                        android:hint="Aarival City"
+                        android:hint="Arrival City"
                         android:layout_alignParentEnd="true"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_kota_tujuan"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="text"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,9 +187,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_bandara_asal"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="text"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,9 +206,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_bandara_tujuan"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="text"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -201,9 +224,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_kode_asal"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:inputType="number"
-                            android:textSize="12sp"
+                            android:layout_height="50dp"
+                            android:inputType="text"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -220,9 +243,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_kode_tujuan"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:inputType="number"
-                            android:textSize="12sp"
+                            android:layout_height="50dp"
+                            android:inputType="text"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -238,9 +261,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_depart_date"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="date"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -257,9 +280,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_depart_time"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="time"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -275,73 +298,18 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_price"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="number"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tl_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tl_price"
-                        app:errorEnabled="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@id/btn_add_img"
-                        android:hint="Image"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/ed_image"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:inputType="text"
-                            android:textSize="12sp"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <ImageView
-                        android:id="@+id/btn_add_img"
-                        android:layout_below="@id/tl_price"
-                        android:layout_alignParentEnd="true"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_baseline_add_photo_alternate_24"
-                        />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tl_desc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tl_image"
-                        app:errorEnabled="true"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/ed_desc"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:hint="Description"
-                            android:textSize="12sp"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/label_card_return"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Return Flight"
-                android:gravity="center_horizontal"
-                android:layout_below="@+id/card_depart"
-                style="@style/card_tv"
-                />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_return"
-                android:layout_below="@+id/label_card_return"
+                android:visibility="gone"
+                android:layout_below="@+id/card_total"
                 app:cardCornerRadius="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
@@ -352,7 +320,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <TextView
+                        android:id="@+id/label_card_return"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Return Flight"
+                        android:gravity="center_horizontal"
+                        style="@style/card_tv"
+                        />
+
                     <com.google.android.material.textfield.TextInputLayout
+                        android:layout_below="@id/label_card_return"
                         android:id="@+id/tl_kota_asal_return"
                         android:layout_width="165dp"
                         android:layout_height="wrap_content"
@@ -363,27 +341,28 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_kota_asal_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:textSize="12sp"
+                            android:layout_height="50dp"
+                            android:textSize="11sp"
                             android:inputType="text"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:layout_below="@id/label_card_return"
                         android:id="@+id/tl_kota_tujuan_return"
                         android:layout_width="165dp"
                         android:layout_height="wrap_content"
                         app:errorEnabled="true"
-                        android:hint="Aarival City"
+                        android:hint="Arrival City"
                         android:layout_alignParentEnd="true"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_kota_tujuan_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="text"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -399,9 +378,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_bandara_asal_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="text"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -418,9 +397,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_bandara_tujuan_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="text"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -436,9 +415,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_kode_asal_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:inputType="number"
-                            android:textSize="12sp"
+                            android:layout_height="50dp"
+                            android:inputType="text"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -455,9 +434,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_kode_tujuan_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:inputType="number"
-                            android:textSize="12sp"
+                            android:layout_height="50dp"
+                            android:inputType="text"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -473,9 +452,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_depart_date_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="date"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -492,9 +471,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_depart_time_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="time"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -510,57 +489,60 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/ed_price_return"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:inputType="number"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_total"
+                android:layout_below="@id/card_depart"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:padding="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tl_image_return"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tl_price_return"
-                        app:errorEnabled="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@id/btn_add_img_return"
-                        android:hint="Image"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/ed_image_return"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:inputType="text"
-                            android:textSize="12sp"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <ImageView
-                        android:id="@+id/btn_add_img_return"
-                        android:layout_below="@id/tl_price_return"
-                        android:layout_alignParentEnd="true"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_baseline_add_photo_alternate_24"
-                        />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tl_desc_return"
+                        android:id="@+id/tl_total_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tl_image_return"
+                        app:errorEnabled="true"
+                        android:hint="Total Price"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ed_total_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:inputType="number"
+                            android:textSize="11sp"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tl_total_price"
                         app:errorEnabled="true"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/ed_desc_return"
+                            android:id="@+id/ed_desc"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="50dp"
                             android:hint="Description"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
+
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
@@ -583,17 +565,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_delete"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:text="Cancel"
+                    android:text="Delete"
                     android:textSize="12sp"
                     android:backgroundTint="@color/grey_700"
                     />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_update"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:text="Save"
+                    android:text="Update"
                     android:textSize="12sp"
                     android:backgroundTint="@color/orange"
                     android:layout_alignParentEnd="true"
