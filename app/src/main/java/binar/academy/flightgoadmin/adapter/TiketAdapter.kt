@@ -3,6 +3,7 @@ package binar.academy.flightgoadmin.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import binar.academy.flightgoadmin.databinding.CardTiketBinding
 import binar.academy.flightgoadmin.model.tiket.TiketResponse
@@ -30,11 +31,12 @@ class TiketAdapter(
             tvKodeDepart.text = currentList.kodeNegaraAsal
             tvKodeArrival.text = currentList.kodeNegaraTujuan
             tvTimeDepart.text = currentList.depatureTime
-            tvFlightType.text = currentList.jenisPenerbangan
+            tvFlightType.text = currentList.bentukPenerbangan
             tvPrice.text = buildString {
                 append("Rp. ")
                 append(currentList.price.toString())
             }
+            Glide.with(holder.itemView).load(currentList.imageProduct).timeout(6000).into(vImage)
         }
 
         holder.binding.root.setOnClickListener {
