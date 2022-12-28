@@ -7,6 +7,7 @@ import binar.academy.flightgoadmin.database.DataStoreAdmin
 import binar.academy.flightgoadmin.model.admin.AdminDataClass
 import binar.academy.flightgoadmin.model.admin.AdminResponse
 import binar.academy.flightgoadmin.model.admin.Data
+import binar.academy.flightgoadmin.model.tiket.ResponseMessage
 import binar.academy.flightgoadmin.model.tiket.TiketResponse
 import binar.academy.flightgoadmin.model.tiket.TiketResponseItem
 import binar.academy.flightgoadmin.network.APIService
@@ -15,10 +16,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
+import kotlin.math.log
 
 @HiltViewModel
 class AdminViewModel @Inject constructor(var api : APIService, @ApplicationContext appContext: Context): ViewModel() {
@@ -29,10 +33,12 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
     private val adminStore: DataStoreAdmin = DataStoreAdmin(appContext)
     val getAll : MutableLiveData<TiketResponse?> = MutableLiveData()
     var login : MutableLiveData<AdminResponse?> = MutableLiveData()
+    var tiket : MutableLiveData<TiketResponseItem?> = MutableLiveData()
+    var delTiket : MutableLiveData<ResponseMessage?> = MutableLiveData()
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            getApiAllTic()
+            getLiveAllTic()
         }
     }
 
@@ -63,6 +69,14 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
 
     fun LoginLive() : LiveData<AdminResponse?> {
         return login
+    }
+
+    fun tiketById() : MutableLiveData<TiketResponseItem?>{
+        return tiket
+    }
+
+    fun delLiveData() : MutableLiveData<ResponseMessage?>{
+        return delTiket
     }
 
     //Retrofit
@@ -107,15 +121,80 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
                             Log.d("SUCCESS GET : ", "$body")
                         }else{
                             getAll.postValue(null)
-                            error("DATA NULL")
+                            Log.d("FAILED GET", "onResponse: $body")
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<TiketResponse>, t: Throwable) {
-                    Log.e("FAILED GET : ", "SOMETHING WRONG ${t.message}", t)
+                    getAll.postValue(null)
+                    Log.e("FAILED GET : ", "${t.message}", t)
                 }
 
             })
     }
+
+    fun putTiketById(
+        token_: String, id_tiket : String, bandara_asal: RequestBody, bandara_asal_: RequestBody, bandara_tujuan: RequestBody,
+        bandara_tujuan_: RequestBody, bentuk_penerbangan : RequestBody, depature_date : RequestBody, depature_date_: RequestBody,
+        depature_time : RequestBody, depature_time_: RequestBody, desctiption: RequestBody, image_product:  MultipartBody.Part,
+        jenis_penerbangan : RequestBody, kode_negara_asal: RequestBody, kode_negara_asal_: RequestBody, kode_negara_tujuan: RequestBody,
+        kode_negara_tujuan_: RequestBody, kota_asal: RequestBody, kota_asal_: RequestBody, kota_tujuan: RequestBody, kota_tujuan_: RequestBody,
+        price: RequestBody, price_: RequestBody, total_price: RequestBody)
+    {
+        api.putTiket(
+            token_, id_tiket, bandara_asal, bandara_asal_, bandara_tujuan, bandara_tujuan_, bentuk_penerbangan,
+            depature_date, depature_date_, depature_time, depature_time_, desctiption, image_product,
+            jenis_penerbangan, kode_negara_asal, kode_negara_asal_, kode_negara_tujuan, kode_negara_tujuan_,
+            kota_asal, kota_asal_, kota_tujuan, kota_tujuan_, price, price_, total_price)
+            .enqueue(object : Callback<TiketResponseItem>{
+                override fun onResponse(
+                    call: Call<TiketResponseItem>,
+                    response: Response<TiketResponseItem>,
+                ) {
+                    val body = response.body()
+                    if (response.isSuccessful){
+                        tiket.postValue(body)
+                        Log.d("SUCCESS UPDATE", "$body")
+                    }else{
+                        tiket.postValue(null)
+                        Log.d("FAILED UPDATE", "$body")
+                    }
+                }
+
+                override fun onFailure(call: Call<TiketResponseItem>, t: Throwable) {
+                    tiket.postValue(null)
+                    Log.e("FAILED PUT : ", "${t.message}", t)
+                }
+
+            })
+
+
+    }
+
+    fun deleteTiket(token_: String, id_tiket: String){
+        api.delTiket(token_, id_tiket)
+            .enqueue(object : Callback<ResponseMessage>{
+                override fun onResponse(
+                    call: Call<ResponseMessage>,
+                    response: Response<ResponseMessage>,
+                ) {
+                    if (response.isSuccessful){
+                        val body = response.body()
+                        if (body!=null){
+                            delTiket.postValue(body)
+                        }else{
+                            delTiket.postValue(null)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseMessage>, t: Throwable) {
+                    delTiket.postValue(null)
+                    Log.e("FAILED PUT : ", "${t.message}", t)
+                }
+
+            })
+    }
+
 }
