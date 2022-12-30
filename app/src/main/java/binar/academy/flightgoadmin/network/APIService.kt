@@ -2,7 +2,6 @@ package binar.academy.flightgoadmin.network
 
 import binar.academy.flightgoadmin.model.admin.AdminDataClass
 import binar.academy.flightgoadmin.model.admin.AdminResponse
-import binar.academy.flightgoadmin.model.admin.Data
 import binar.academy.flightgoadmin.model.booked.BookingResponse
 import binar.academy.flightgoadmin.model.tiket.ResponseMessage
 import binar.academy.flightgoadmin.model.tiket.TiketResponse
@@ -29,6 +28,12 @@ interface APIService {
 
     @GET("ticket/transaction/data")
     fun getBookedHistory() : Call<BookingResponse>
+
+    @POST("ticket")
+    fun addTiket(
+        @Header("Authorization") token: String,
+        @Body request : ResponseMessage
+    ) : Call<TiketResponseItem>
 
     @PUT("ticket/{id}")
     @Multipart

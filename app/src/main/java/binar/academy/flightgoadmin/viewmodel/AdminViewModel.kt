@@ -6,7 +6,6 @@ import androidx.lifecycle.*
 import binar.academy.flightgoadmin.database.DataStoreAdmin
 import binar.academy.flightgoadmin.model.admin.AdminDataClass
 import binar.academy.flightgoadmin.model.admin.AdminResponse
-import binar.academy.flightgoadmin.model.admin.Data
 import binar.academy.flightgoadmin.model.tiket.ResponseMessage
 import binar.academy.flightgoadmin.model.tiket.TiketResponse
 import binar.academy.flightgoadmin.model.tiket.TiketResponseItem
@@ -22,7 +21,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
-import kotlin.math.log
 
 @HiltViewModel
 class AdminViewModel @Inject constructor(var api : APIService, @ApplicationContext appContext: Context): ViewModel() {
@@ -34,6 +32,7 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
     val getAll : MutableLiveData<TiketResponse?> = MutableLiveData()
     var login : MutableLiveData<AdminResponse?> = MutableLiveData()
     var tiket : MutableLiveData<TiketResponseItem?> = MutableLiveData()
+    var postTiket : MutableLiveData<TiketResponseItem?> = MutableLiveData()
     var delTiket : MutableLiveData<ResponseMessage?> = MutableLiveData()
 
     init {
@@ -131,6 +130,29 @@ class AdminViewModel @Inject constructor(var api : APIService, @ApplicationConte
                     Log.e("FAILED GET : ", "${t.message}", t)
                 }
 
+            })
+    }
+
+    fun postTiket(token_: String, request: ResponseMessage) {
+        api.addTiket(token_, request)
+            .enqueue(object : Callback<TiketResponseItem> {
+                override fun onResponse(
+                    call: Call<TiketResponseItem>,
+                    response: Response<TiketResponseItem>
+                ) {
+                    val body = response.body()
+                    if (response.isSuccessful){
+                        postTiket.postValue(body)
+                        Log.d("SUCCESSFULL CREATE DATA", "$body")
+                    } else {
+                        postTiket.postValue(null)
+                        Log.d("FAILED CREATE DATA", "$body")
+                    }
+                }
+
+                override fun onFailure(call: Call<TiketResponseItem>, t: Throwable) {
+                    postTiket.postValue(null)
+                }
             })
     }
 
